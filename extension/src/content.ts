@@ -25,7 +25,7 @@ const layoutShiftEntries: PerformanceEntry[] = [];
 const lcpEntries: PerformanceEntry[] = [];
 const inpEntries: PerformanceEntry[] = [];
 const longTasks: PerformanceEntry[] = [];
-const collectionSessionId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+const collectionSessionId = crypto.randomUUID();
 
 window.addEventListener('error', (event) => {
   const source = event.filename || '(inline)';
@@ -95,7 +95,7 @@ if ('PerformanceObserver' in window) {
 
 function getNavigationId() {
   if (!window.__collectorNavId) {
-    window.__collectorNavId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    window.__collectorNavId = crypto.randomUUID();
   }
   return window.__collectorNavId;
 }

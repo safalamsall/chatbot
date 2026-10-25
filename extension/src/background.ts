@@ -31,7 +31,7 @@ const state: CollectorState = {
 const requestStart = new Map<string, NetworkEntry>();
 const backgroundRuns = new Map<string, { cancelled: boolean }>();
 
-const uid = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+const uid = () => crypto.randomUUID();
 
 async function loadState() {
   const loaded = await chrome.storage.local.get(STORAGE_KEY);
