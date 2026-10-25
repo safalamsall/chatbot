@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Browser-wide Research Collector",
+  "version": "1.0.0",
+  "description": "Browser-wide navigation, performance, DOM, network, storage, security and JS workbench collection.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab",
+    "webNavigation",
+    "webRequest",
+    "cookies"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Open Browser Collector"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
